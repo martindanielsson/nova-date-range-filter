@@ -61,6 +61,10 @@ export default {
       return this.filter.dateFormat || 'Y-m-d'
     },
 
+    firstDayOfWeek() {
+      return this.filter.firstDayOfWeek || 0
+    },
+
     twelveHourTime() {
       return this.filter.twelveHourTime
     },
@@ -90,11 +94,14 @@ export default {
           self.$refs.datePicker.parentNode.classList.add('date-filter')
         },
           locale: {
-              rangeSeparator: ` ${this.separator} `
+              rangeSeparator: ` ${this.separator} `,
+              firstDayOfWeek: this.firstDayOfWeek
           }
       })
       const wrapper = document.querySelector('.dropdown-menu div')
-      wrapper.classList.remove('overflow-hidden')
+      if (typeof wrapper !== "undefined" && wrapper != null) {
+        wrapper.classList.remove('overflow-hidden')
+      }
     })
   },
 

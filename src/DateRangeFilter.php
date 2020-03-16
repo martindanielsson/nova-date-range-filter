@@ -12,8 +12,8 @@ abstract class DateRangeFilter extends Filter
     public function __construct()
     {
         $this->dateFormat('Y-m-d');
+        $this->firstDayOfWeek(0);
     }
-
 
     /**
      * Get the filter's available options.
@@ -26,13 +26,36 @@ abstract class DateRangeFilter extends Filter
         //
     }
 
+    /**
+     * Set the dateFormat.
+     *
+     * @param string $format
+     * @return $this
+     */
     public function dateFormat($format)
     {
-        return $this->withMeta(['dateFormat' => $format]);
+        return $this->withMeta([__FUNCTION__ => $format]);
     }
 
+    /**
+     * Set the placeholder text.
+     *
+     * @param string $placeholder
+     * @return $this
+     */
     public function placeholder($placeholder)
     {
-        return $this->withMeta(['placeholder' => $placeholder]);
+        return $this->withMeta([__FUNCTION__ => $placeholder]);
+    }
+
+    /**
+     * Set the first day of the week.
+     *
+     * @param int $day
+     * @return $this
+     */
+    public function firstDayOfWeek($day)
+    {
+        return $this->withMeta([__FUNCTION__ => $day]);
     }
 }
